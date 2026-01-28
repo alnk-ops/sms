@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
+
+{% extends 'student/main.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/student/index.css' %}">
+
     <h1>hello Bilal</h1>
     <h2>Welcome to the Student Management System</h2>
-    
-</body>
-</html>
+    <img src="{% static 'images/aston.jpg' %}" alt="Aston" width="250" height="300">
+
+{% endblock %}
