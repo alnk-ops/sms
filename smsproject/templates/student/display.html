@@ -1,26 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>display</title>
-</head>
-<body>
-    <h1>Student Details</h1>
-    <p>Name: {{ name }}</p>
-    <p>Username: {{ username }}</p>
-    <p>Email: {{ email }}</p>
-    <p>Password: {{ password }}</p>
-    <p>College: {{ college }}</p>
-    <p>Branch: {{ branch }}</p>
-    <p>Age: {{ age }}</p>
-    <p>Mobile Number: {{ mobile }}</p>
-    <p>Gender: {{ gender }}</p>
-    <p>Course: {{ course }}</p>
-    <p>Address: {{ address }}</p>
-    <ul>
-    {% for subject in subjects %}
-        <li>{{ subject }}</li>
+{% extends "student/main.html" %}
+{% load static %}
+{% block content %}
+<table border="1">
+
+    <tr>
+        <!-- <h1>Student Details</h1> -->
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>College</th>
+        <th>Branch</th>
+        <th>Age</th>
+        <th>Mobile Number</th>
+        <th>Gender</th>
+        <th>Course</th>
+        <th>Address</th>
+    </tr>
+
+    {% for Student in students %}
+    <tr>
+        <td>{{ Student.full_name }}</td>
+        <td>{{ Student.username }}</td>
+        <td>{{ Student.email }}</td>
+        <td>{{ Student.password }}</td>
+        <td>{{ Student.college }}</td>
+        <td>{{ Student.branch }}</td>
+        <td>{{ Student.age }}</td>
+        <td>{{ Student.mobile_number }}</td>
+        <td><a href="{% url 'update' Student.id %}">Update</a></td>
+        <td><a href="{% url 'delete' Student.id %}">Delete</a></td>
+    </tr>
     {% endfor %}
-</body>
-</html>
+
+    {% endblock %}
